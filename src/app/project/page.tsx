@@ -1,8 +1,10 @@
 'use client';
 
 import { ImageCarousel } from '@/components/ImageCarousal';
+import { Button } from '@/components/ui/button';
 import { RootState } from '@/lib/store';
 import { motion } from 'framer-motion';
+import { Code, ExternalLink, GithubIcon } from 'lucide-react';
 import { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -137,16 +139,18 @@ const ProjectPage = () =>
                     <Link
                         href={projectToDisplay.githubLink}
                         target="_blank"
-                        className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
                     >
-                        GitHub
+                        <Button variant={"outline"}>
+                            <Code />
+                        </Button>
                     </Link>
                     <Link
                         href={projectToDisplay.url}
                         target="_blank"
-                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-500"
                     >
-                        Live Site
+                        <Button variant={"outline"}>
+                            <ExternalLink />
+                        </Button>
                     </Link>
                 </motion.div>
             </div>
