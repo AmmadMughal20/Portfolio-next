@@ -131,3 +131,12 @@ html {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+.red-circle {
+  background-color: green;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
