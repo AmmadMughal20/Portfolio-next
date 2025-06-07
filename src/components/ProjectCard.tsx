@@ -1,11 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
+import { GithubIcon, NetworkIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import { ProjectCardSchema } from './Projects'
-import { Button } from './ui/button'
-import { GithubIcon, NetworkIcon } from 'lucide-react'
 // import ReactGA from 'react-ga4'
 
 const ProjectCard = ({ project, variants }: ProjectCardSchema) =>
