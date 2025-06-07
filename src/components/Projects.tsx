@@ -1,7 +1,11 @@
 'use client'
 import React, { useRef, useEffect } from 'react'
 import ProjectCard from './ProjectCard'
-import { motion, useAnimation, useInView, Variants } from 'framer-motion'
+import
+{
+    // motion,
+    useAnimation, useInView, Variants
+} from 'framer-motion'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/lib/store'
 import { ProjectSchema } from '@/app/project/page'
@@ -32,15 +36,28 @@ const Projects = () =>
         }
     }, [inView, controls]);
 
-    const containerVariants = {
-        hidden: {},
-        visible: {
-            transition: {
-                staggerChildren: 0.3,
-                delayChildren: 0.4,
-            },
-        },
-    };
+    useEffect(() =>
+    {
+        const hash = window.location.hash;
+        if (hash === '#projects')
+        {
+            // Small delay ensures layout is settled before animating
+            setTimeout(() =>
+            {
+                controls.start('visible');
+            }, 300);
+        }
+    }, [controls]);
+
+    // const containerVariants = {
+    //     hidden: {},
+    //     visible: {
+    //         transition: {
+    //             staggerChildren: 0.3,
+    //             delayChildren: 0.4,
+    //         },
+    //     },
+    // };
 
     const itemVariants = {
         hidden: { opacity: 0, y: 40 },
@@ -54,53 +71,62 @@ const Projects = () =>
         },
     };
 
-    const projectTitleVariants = {
-        hidden: { opacity: 0, x: 100 },
-        visible: {
-            opacity: 1,
-            x: 0,
-            transition: {
-                duration: 0.6,
-                ease: 'easeOut',
-            },
-        },
-    };
+    // const projectTitleVariants = {
+    //     hidden: { opacity: 0, x: 100 },
+    //     visible: {
+    //         opacity: 1,
+    //         x: 0,
+    //         transition: {
+    //             duration: 0.6,
+    //             ease: 'easeOut',
+    //         },
+    //     },
+    // };
 
     return (
         <div
             ref={ref}
             id="projects"
-            className="dark:bg-black dark:text-white bg-white text-gray-800 w-full px-4 xs:px-10 xs:pt-[-100px]"
+            className="scroll-mt-24 dark:bg-black dark:text-white bg-white text-gray-800 w-full px-4 xs:px-10"
         >
             <div className="max-w-7xl mx-auto grid">
-                <motion.div className="flex flex-row items-center"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={controls}
+                {/* <motion. */}
+                <div className="flex flex-row items-center"
+                // variants={containerVariants}
+                // initial="hidden"
+                // animate={controls}
                 >
-                    <motion.div
+                    {/* <motion. */}
+                    <div
                         className="flex-1 mr-4 h-px bg-gray-400"
-                        variants={itemVariants}
+                    // variants={itemVariants}
                     />
-                    <motion.h2
+                    {/* <motion. */}
+                    <h2
                         className="text-black dark:text-white sm:text-[1.75rem] text-right m-0 p-0 w-max text-3xl font-bold"
-                        variants={projectTitleVariants}
+                    // variants={projectTitleVariants}
                     >
                         Projects
                         <span className="text-primary">.</span>
-                    </motion.h2>
-                </motion.div>
+                        {/* </motion. */}
+                    </h2>
+                    {/* </ */}
+                    {/* motion. */}
+                </div>
 
-                <motion.div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-10 xs:grid-cols-1"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={controls}>
+                {/* <motion. */}
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-10 xs:grid-cols-1"
+                // variants={containerVariants}
+                // initial="hidden"
+                // animate={controls}
+                >
                     {pd.map((item: ProjectSchema, index: number) => (
                         <ProjectCard key={index} project={item} variants={itemVariants} />
                     ))}
-                </motion.div>
+                    {/* </motion. */}
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
 
