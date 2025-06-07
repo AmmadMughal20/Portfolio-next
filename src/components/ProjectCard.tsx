@@ -17,7 +17,7 @@ const ProjectCard = ({ project, variants }: ProjectCardSchema) =>
     // }
 
     return (
-        <motion.div className="m-2 sm:max-w-[27.5%] dark:bg-gray-900 dark:text-white rounded-lg shadow-md"
+        <motion.div className="dark:bg-gray-900 dark:text-white rounded-lg shadow-md"
             variants={variants}>
             <div
                 className="pt-6 px-6 pb-0 rounded-t-lg bg-gray-200 dark:bg-gray-900
@@ -28,7 +28,7 @@ const ProjectCard = ({ project, variants }: ProjectCardSchema) =>
                     href={`/project?projectTitle=${project.urlTitle}`}
                 // onClick={() => handleProjectClick(project.name)}
                 >
-                    <div className="overflow-hidden rounded-t-lg">
+                    <div className="overflow-hidden rounded-t-lg h-35">
                         <Image
                             width={100}
                             height={100}
@@ -64,7 +64,9 @@ const ProjectCard = ({ project, variants }: ProjectCardSchema) =>
             </p>
 
             <p className="text-black dark:text-white px-6 text-justify mb-4 text-sm">
-                {project.description}
+                {project.description.length > 100
+                    ? project.description.slice(0, 100) + '...'
+                    : project.description}
             </p>
         </motion.div>
     )

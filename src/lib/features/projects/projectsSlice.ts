@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import eOps from '@/assets/images/eOps.png';
+import eOps1 from '@/assets/images/eops/1.png';
+import eOps2 from '@/assets/images/eops/2.png';
+import eOps3 from '@/assets/images/eops/3.png';
 import MecpoSmart from '@/assets/images/MEPCO Smart.jpeg';
 import Codiniti from '@/assets/images/Codiniti.png';
 import CitizenMonitor from '@/assets/images/Citizen Monitor.png';
@@ -22,6 +25,7 @@ const initialState = {
             technologies: ['React', 'Tailwind CSS', 'Shadcn', 'Typescript'],
             url: 'https://kippax-creative-canvas.vercel.app/',
             image: Kippax,
+            images: [Kippax],
             video: {
                 src: './',
                 type: '',
@@ -34,9 +38,10 @@ const initialState = {
             type: 'Single Page App',
             urlTitle: 'Codiniti',
             githubLink: 'https://github.com/AmmadMughal20/Codiniti',
-            technologies: ['React', 'Tailwind CSS', '', 'Javascript', 'Framer Motion'],
+            technologies: ['React', 'Tailwind CSS', 'Shadcn', 'Javascript', 'Framer Motion'],
             url: 'http://www.codiniti.com',
             image: Codiniti,
+            images: [Codiniti],
             video: {
                 src: '',
                 type: '',
@@ -52,6 +57,7 @@ const initialState = {
             technologies: ['Next.js', 'Tailwind CSS', 'Mongo Db', 'Typescript', 'Shadcn', 'Zod'],
             url: 'https://crappo-nine.vercel.app/',
             image: Crappo,
+            images: [Crappo],
             video: {
                 src: '',
                 type: '',
@@ -67,6 +73,7 @@ const initialState = {
             technologies: ['React', 'Flask', 'Tailwind', 'Typescript', 'Python'],
             url: '',
             image: Spm,
+            images: [Spm],
             video: {
                 src: '',
                 type: '',
@@ -82,6 +89,7 @@ const initialState = {
             technologies: ['Flask', 'Jinja2', 'PostgreSql', 'SQLAlchemy', 'Javascript'],
             url: '',
             image: Sis,
+            images: [Sis],
             video: {
                 src: '',
                 type: '',
@@ -97,6 +105,7 @@ const initialState = {
             technologies: ['Flask', 'Jinja2', 'SocketIO', 'WebRTC', 'Javascript'],
             url: '',
             image: Chatiniti,
+            images: [Chatiniti],
             video: {
                 src: '',
                 type: '',
@@ -113,6 +122,7 @@ const initialState = {
             technologies: ['React.js', 'Material UI', 'SCSS', 'Javascript', 'Js pdf'],
             url: 'https://eops.pitc.com.pk',
             image: eOps,
+            images: [eOps, eOps1, eOps2, eOps3],
             video: {
                 src: './eOps.mp4',
                 type: 'video/mp4',
@@ -128,6 +138,7 @@ const initialState = {
             technologies: ['React Native', 'React.js', 'Material UI', 'SCSS', 'Typescript'],
             url: 'http://117.20.28.178:8040',
             image: MecpoSmart,
+            images: [MecpoSmart],
             video: {
                 src: './mepco.mp4',
                 type: 'video/mp4',
@@ -144,6 +155,7 @@ const initialState = {
             technologies: ['React.js', 'Material UI', 'SCSS', 'JsPdf', 'JsBarCode', 'Media Queries'],
             url: 'http://117.20.28.178:8042',
             image: OptForSmartMeters,
+            images: [OptForSmartMeters],
             video: {
                 src: './CFC.mp4',
                 type: 'video/mp4',
@@ -159,6 +171,7 @@ const initialState = {
             technologies: ['React.js', 'Tailwind', 'Javascript', 'Styled Components', 'Framer Motion'],
             url: 'https://exam-ready.vercel.app/',
             image: ExamReady,
+            images: [ExamReady],
             video: {
                 src: './CFC.mp4',
                 type: 'video/mp4',
@@ -174,6 +187,7 @@ const initialState = {
             technologies: ['React.js', 'SCSS', 'Javascript', 'Styled Components'],
             url: 'http://117.20.28.178:8047',
             image: AntiTheft,
+            images: [AntiTheft],
             video: {
                 src: './CFC.mp4',
                 type: 'video/mp4',
@@ -189,6 +203,7 @@ const initialState = {
             technologies: ['React.js', 'Tanstack Table', 'SCSS', 'Material UI'],
             url: 'http://117.20.28.178:8044',
             image: CitizenMonitor,
+            images: [CitizenMonitor],
             video: {
                 src: './CFC.mp4',
                 type: 'video/mp4',

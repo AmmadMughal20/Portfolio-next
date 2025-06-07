@@ -91,7 +91,7 @@ const Projects = () =>
                     </motion.h2>
                 </motion.div>
 
-                <motion.div className="flex flex-wrap justify-between"
+                <motion.div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-10 xs:grid-cols-1"
                     variants={containerVariants}
                     initial="hidden"
                     animate={controls}>
