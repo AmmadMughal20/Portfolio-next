@@ -1,10 +1,14 @@
 'use client';
-import { motion } from 'framer-motion';
-import { useSelector } from 'react-redux';
+
+import { motion, useAnimation, useInView } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { Button } from './ui/button';
 
 const Intro = () =>
 {
-    const { isDarkMode } = useSelector((state: any) => state.darkMode)
+    const controls = useAnimation();
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: false, amount: 0.3 });
 
     const handleScrollToContact = () =>
     {
@@ -15,54 +19,88 @@ const Intro = () =>
         }
     };
 
+    useEffect(() =>
+    {
+        if (inView)
+        {
+            controls.start('visible');
+        } else
+        {
+            controls.start('hidden');
+        }
+    }, [inView, controls]);
+
     return (
-        <div className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'} min-h-screen flex items-center justify-center`} id="intro">
-            <div className="w-full px-4 sm:px-6 lg:px-8 max-w-5xl">
-                <div className="flex flex-col items-start space-y-6">
+        <section
+            id="intro"
+            className={`min-h-screen flex items-center justify-center transition-colors duration-300 dark:bg-black dark:text-white bg-white text-black} px-4 sm:px-6 md:px-8`}
+        >
+            <div className="w-full max-w-5xl xs:px-10">
+                <div className="flex flex-col items-start gap-6 sm:gap-8 md:gap-10">
+                    {/* Heading */}
                     <motion.h1
-                        className="text-4xl sm:text-5xl font-bold"
-                        variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
-                        transition={{ duration: 0.5, ease: 'easeInOut' }}
+                        ref={ref}
+                        className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight"
+                        variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.6, ease: 'easeInOut' }}
                         initial="hidden"
-                        animate="visible"
+                        animate={controls}
                     >
-                        Hi, I am Ammad<span className="text-green-500">.</span>
+                        Hi, I&apos;m <span className="text-primary">Ammad</span>.
                     </motion.h1>
 
+                    {/* Title */}
                     <motion.p
-                        className="text-xl font-medium"
-                        variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
-                        transition={{ duration: 0.5, delay: 0.1, ease: 'backIn' }}
+                        className="text-lg sm:text-xl md:text-2xl font-semibold"
+                        variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.6, delay: 0.1, ease: 'easeInOut' }}
                         initial="hidden"
-                        animate="visible"
+                        animate={controls}
                     >
-                        A talented <span className="text-green-500">Software Engineer</span>
+                        A passionate <span className="text-primary">Software Engineer</span>
                     </motion.p>
 
+                    {/* Description */}
                     <motion.p
-                        className="text-base max-w-2xl leading-relaxed"
-                        variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
-                        transition={{ duration: 0.5, delay: 0.2, ease: 'backIn' }}
+                        className="text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed text-justify"
+                        variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.6, delay: 0.2, ease: 'easeInOut' }}
                         initial="hidden"
-                        animate="visible"
+                        animate={controls}
                     >
-                        I have spent last 4 years making good softwares for companies. My expertise are in web development and have a passion in Artificial Intelligence.
+                        With 4 years of experience building scalable web applications for companies, I specialize in full-stack development and have a deep interest in Artificial Intelligence.
                     </motion.p>
 
-                    <motion.button
-                        onClick={handleScrollToContact}
-                        className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition duration-300"
-                        variants={{ hidden: { opacity: 0, x: -50 }, visible: { opacity: 1, x: 0 } }}
-                        transition={{ duration: 1, delay: 0.25, ease: 'backIn' }}
+                    {/* Button */}
+                    <motion.div
+                        variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.6, delay: 0.3, ease: 'easeInOut' }}
                         initial="hidden"
-                        animate="visible"
+                        animate={controls}
                     >
-                        Contact Me
-                    </motion.button>
+                        <Button
+                            onClick={handleScrollToContact}
+                            className="text-base sm:text-lg px-6 py-3 rounded-md"
+                        >
+                            Contact Me
+                        </Button>
+                    </motion.div>
                 </div>
             </div>
-        </div>
-    )
-}
+        </section>
+    );
+};
 
-export default Intro
+export default Intro;

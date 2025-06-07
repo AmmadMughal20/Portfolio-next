@@ -1,13 +1,14 @@
 'use client'
 
+import { motion } from 'framer-motion';
 import React from 'react';
+import { ExperienceSectionProps } from './Experience';
 
-const ExperienceSection = (props) =>
+const ExperienceSection = ({ experience, variants }: ExperienceSectionProps) =>
 {
-    const { experience } = props;
-
     return (
-        <div className="mt-10 mb-20 px-4 sm:px-6 md:px-8">
+        <motion.div className="mt-10 mb-20"
+            variants={variants}>
             <div className="flex justify-between mt-10">
                 <h3 className="text-black dark:text-white m-0 p-0 text-lg sm:text-base">{experience.companyName}</h3>
                 <p className="text-black dark:text-white m-0 p-0 text-lg sm:text-sm">{experience.cityName}</p>
@@ -23,7 +24,7 @@ const ExperienceSection = (props) =>
             </p>
 
             <div className="flex flex-wrap mt-2 mb-20">
-                {experience.skills.map((item, index) => (
+                {experience.skills.map((item: string, index: number) => (
                     <p
                         key={index}
                         className="bg-gray-200 dark:bg-gray-900 text-black dark:text-white rounded-full px-3 py-1 mx-1 my-0.5 text-sm sm:text-xs"
@@ -32,7 +33,7 @@ const ExperienceSection = (props) =>
                     </p>
                 ))}
             </div>
-        </div>
+        </motion.div>
 
     );
 };

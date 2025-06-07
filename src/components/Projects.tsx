@@ -1,66 +1,104 @@
 'use client'
 import React, { useRef, useEffect } from 'react'
 import ProjectCard from './ProjectCard'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, useInView, Variants } from 'framer-motion'
 import { useSelector } from 'react-redux'
+import { RootState } from '@/lib/store'
+import { ProjectSchema } from '@/app/project/page'
 
+
+export interface ProjectCardSchema
+{
+    project: ProjectSchema,
+    variants: Variants
+}
 const Projects = () =>
 {
-    const refProjects = useRef(null)
-    const controlsProjectHeading = useAnimation()
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: false, amount: 0.2 });
+    const controls = useAnimation();
 
-    const { projectsData: pd } = useSelector((state: any) => state.projects)
+    const { projectsData: pd } = useSelector((state: RootState) => state.projects)
 
-    const handleScroll = () =>
-    {
-        const projectTop = refProjects.current.offsetTop
-        const scrollPosition = window.scrollY + window.innerHeight
-
-        if (scrollPosition > projectTop)
-        {
-            controlsProjectHeading.start({
-                opacity: 1,
-                x: 0,
-                transition: { duration: 0.35, delay: 0.35, ease: 'easeInOut' },
-            })
-        } else
-        {
-            controlsProjectHeading.start({ opacity: 0, x: 100 })
-        }
-    }
 
     useEffect(() =>
     {
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
+        if (inView)
+        {
+            controls.start('visible');
+        } else
+        {
+            controls.start('hidden');
+        }
+    }, [inView, controls]);
+
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.3,
+                delayChildren: 0.4,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: 'easeOut',
+            },
+        },
+    };
+
+    const projectTitleVariants = {
+        hidden: { opacity: 0, x: 100 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.6,
+                ease: 'easeOut',
+            },
+        },
+    };
 
     return (
         <div
-            ref={refProjects}
+            ref={ref}
             id="projects"
-            className="min-h-screen w-full flex flex-col items-center pt-20 bg-white dark:bg-black"
+            className="dark:bg-black dark:text-white bg-white text-gray-800 w-full px-4 xs:px-10 xs:pt-[-100px]"
         >
-            <div className="w-4/5 sm:w-[70%] sm:ml-20 sm:z-10">
-                <div className="flex flex-row sm:flex-row items-center sm:items-start">
-                    <div className="w-4/5 p-2">
-                        <hr />
-                    </div>
+            <div className="max-w-7xl mx-auto grid">
+                <motion.div className="flex flex-row items-center"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={controls}
+                >
+                    <motion.div
+                        className="flex-1 mr-4 h-px bg-gray-400"
+                        variants={itemVariants}
+                    />
                     <motion.h2
-                        className="text-black dark:text-white sm:text-[1.75rem] text-left m-0 p-0 w-max text-3xl font-bold"
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={controlsProjectHeading}
+                        className="text-black dark:text-white sm:text-[1.75rem] text-right m-0 p-0 w-max text-3xl font-bold"
+                        variants={projectTitleVariants}
                     >
                         Projects
-                        <span className="text-green-400 dark:text-green-600">.</span>
+                        <span className="text-primary">.</span>
                     </motion.h2>
-                </div>
+                </motion.div>
 
-                <div className="flex flex-wrap justify-between mt-6 xs:flex-col">
-                    {pd.map((item: any, index: number) => (
-                        <ProjectCard key={index} project={item} />
+                <motion.div className="flex flex-wrap justify-between"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={controls}>
+                    {pd.map((item: ProjectSchema, index: number) => (
+                        <ProjectCard key={index} project={item} variants={itemVariants} />
                     ))}
-                </div>
+                </motion.div>
             </div>
         </div>
     )

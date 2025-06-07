@@ -1,66 +1,120 @@
 'use client'
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, useInView, Variants } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import ExperienceSection from './ExperienceSection';
+import React from 'react';
+import { RootState } from '@/lib/store';
+
+
+export interface ExperienceSchema
+{
+    companyName: string,
+    cityName: string,
+    position: string,
+    duration: string,
+    description:
+    string,
+    skills: Array<string>,
+}
+export interface ExperienceSectionProps
+{
+    experience: ExperienceSchema;
+    variants: Variants;
+}
 
 const Experience = () =>
 {
+    const { data: experiences } = useSelector((state: RootState) => state.experiences);
 
-    const { data: experiences } = useSelector((state: any) => state.experiences)
-
-    const refExperience = useRef(null);
-    const controlsExperienceHeading = useAnimation();
-
-    const handleScroll = () =>
-    {
-        if (!refExperience.current) return;
-
-        const experienceTop = refExperience.current.offsetTop;
-        const scrollPosition = window.scrollY + window.innerHeight;
-
-        if (scrollPosition > experienceTop)
-        {
-            controlsExperienceHeading.start({ opacity: 1, x: 0, transition: { duration: 0.35, delay: 0.35, ease: 'easeInOut' } });
-        } else
-        {
-            controlsExperienceHeading.start({ opacity: 0, x: -50 });
-        }
-    };
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: false, amount: 0.2 });
+    const controls = useAnimation();
 
     useEffect(() =>
     {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        if (inView)
+        {
+            controls.start('visible');
+        } else
+        {
+            controls.start('hidden');
+        }
+    }, [inView, controls]);
+
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.3,
+                delayChildren: 0.4,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: 'easeOut',
+            },
+        },
+    };
+
+    const experienceTitleVariants = {
+        hidden: { opacity: 0, x: -100 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.6,
+                ease: 'easeOut',
+            },
+        },
+    };
 
     return (
         <div
-            ref={refExperience}
+            ref={ref}
             id="experience"
-            className="min-h-screen pt-20 flex flex-col items-center w-auto h-auto bg-white dark:bg-gray-900"
+            className="dark:bg-black dark:text-white bg-white text-gray-800 min-h-screen h-auto w-full py-32 px-4 xs:px-20"
         >
-            <div className="w-4/5 max-sm:w-[70%] max-sm:ml-20 z-10">
-                <div className="flex flex-row items-center">
+            <div className="max-w-7xl mx-auto grid">
+                {/* Title Section */}
+                <motion.div
+                    className="flex flex-row items-center"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={controls}
+                >
                     <motion.h2
-                        initial={{ opacity: 0, x: -100 }}
-                        animate={controlsExperienceHeading}
-                        className="text-3xl max-sm:text-xl m-0 p-0 text-black dark:text-white"
+                        variants={experienceTitleVariants}
+                        className="text-black dark:text-white sm:text-[1.75rem] text-left m-0 p-0 w-max text-3xl font-bold"
                     >
-                        Experience
-                        <span className="text-green-500">.</span>
+                        Experience<span className="text-primary">.</span>
                     </motion.h2>
-                    <p className="w-full p-1">
-                        <hr />
-                    </p>
-                </div>
+                    <motion.div
+                        className="flex-1 ml-4 h-px bg-gray-400"
+                        variants={itemVariants}
+                    />
+                </motion.div>
 
-                {experiences.map((item, index) => (
-                    <ExperienceSection key={index} experience={item} />
-                ))}
+                {/* Experience Cards */}
+                <motion.div
+                    className="mt-8"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={controls}
+                >
+                    {experiences.map((item: ExperienceSchema, index: number) => (
+                        <ExperienceSection key={index} experience={item} variants={itemVariants} />
+                    ))}
+                </motion.div>
             </div>
         </div>
-
     );
 };
 

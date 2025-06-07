@@ -7,6 +7,7 @@ import MADark from '@/assets/images/MADark.png'
 import { toggleDarkMode } from "@/lib/features/context/contextSlice";
 import { Lightbulb, LightbulbOff, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
+import { RootState } from "@/lib/store";
 
 export default function Topbar()
 {
@@ -29,7 +30,7 @@ export default function Topbar()
 function TopbarLinks()
 {
     const dispatch = useDispatch()
-    const { isDarkMode } = useSelector((state: any) => state.darkMode)
+    const { isDarkMode } = useSelector((state: RootState) => state.darkMode)
 
     const handleDownload = () =>
     {
