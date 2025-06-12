@@ -4,7 +4,7 @@ import { ImageCarousel } from '@/components/ImageCarousal';
 import { Button } from '@/components/ui/button';
 import { RootState } from '@/lib/store';
 import { motion } from 'framer-motion';
-import { Code, ExternalLink, GithubIcon } from 'lucide-react';
+import { Code, ExternalLink } from 'lucide-react';
 import { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';

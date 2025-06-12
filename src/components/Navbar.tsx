@@ -1,10 +1,12 @@
 // components/SideNav.tsx
 // components/SideNav.tsx
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
 
 export default function SideNav()
 {
@@ -44,46 +46,77 @@ export default function SideNav()
 
 function SidebarLinks({ closeSheet }: { closeSheet?: () => void })
 {
+    const router = useRouter();
+    const pathname = usePathname();
+    const [scrollToId, setScrollToId] = useState<string | null>(null);
+
+    useEffect(() =>
+    {
+        if (scrollToId && pathname === "/")
+        {
+            const section = document.getElementById(scrollToId);
+            if (section)
+            {
+                const yOffset = -80;
+                const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+            setScrollToId(null);
+        }
+    }, [pathname, scrollToId]);
+
     interface MenuItem
     {
         title: string;
-        id: string;
+        id?: string;    // used for section scroll
+        href?: string;  // used for external pages
     }
-
-    const handleScrollTo = (item: MenuItem) =>
-    {
-        const section = document.getElementById(item.id);
-        if (section)
-        {
-            const yOffset = -80; // Adjust this value to match your header height
-            const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
-
-            window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-
-        if (closeSheet) closeSheet(); // Close the sheet on mobile
-    };
 
     const menuItems: MenuItem[] = [
         { title: 'About', id: 'about' },
         { title: 'Projects', id: 'projects' },
         { title: 'Exp.', id: 'experience' },
-        { title: 'Contact', id: 'contact' }
+        { title: 'Contact', id: 'contact' },
+        { title: 'Chatgpt', href: '/chatgpt' },
     ];
+
+    const handleClick = (item: MenuItem) => (e: React.MouseEvent<HTMLAnchorElement>) =>
+    {
+        e.preventDefault();
+
+        if (item.id)
+        {
+            if (pathname === "/")
+            {
+                const section = document.getElementById(item.id);
+                if (section)
+                {
+                    const yOffset = -80;
+                    const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                    history.pushState(null, '', `#${item.id}`);
+                }
+            } else
+            {
+                setScrollToId(item.id);
+                router.push('/');
+            }
+        } else if (item.href)
+        {
+            router.push(item.href);
+        }
+
+        if (closeSheet) closeSheet();
+    };
 
     return (
         <nav className="flex flex-col gap-10 lg:gap-20 items-center justify-between">
             {
                 menuItems.map((item) => (
                     <Link
-                        href={`#${item.id}`}
-                        onClick={(e) =>
-                        {
-                            e.preventDefault();
-                            handleScrollTo(item);
-                            history.pushState(null, '', `#${item.id}`);
-                        }}
-                        key={item.id}
+                        href={item.href || `#${item.id}`}
+                        onClick={handleClick(item)}
+                        key={item.id || item.title}
                         className="flex lg:rotate-90 items-center text-sm text-gray-800 dark:text-white hover:text-black dark:hover:text-gray-200"
                     >
                         {item.title}

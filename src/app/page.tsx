@@ -87,7 +87,7 @@ export default function Home()
     {
       initCircles(mainRef);
     }
-  }, []);
+  }, [initCircles]);
 
   const Contact = dynamic(() => import('@/components/Contact'), { ssr: false })
   return (
