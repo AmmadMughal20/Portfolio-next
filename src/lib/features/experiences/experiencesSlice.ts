@@ -2,31 +2,42 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     data: [
         {
+            companyName: 'Self-Employed',
+            cityName: 'Lahore',
+            position: 'Full-Stack Software Engineer',
+            duration: 'June 2025 - Till date',
+            description:
+                'Designing and developing AI-powered SaaS applications and modern web solutions using Next.js, React, and Flask. Leading projects such as the AI Calling Assistant and BestCoverLetter, focusing on building scalable architectures, integrating OpenAI APIs, and crafting responsive, user-centered interfaces that deliver exceptional performance and usability.',
+            skills: [
+                'Next.js',
+                'React',
+                'TypeScript',
+                'Tailwind CSS',
+                'OpenAI API',
+                'Python',
+                'Flask',
+                'Prisma',
+                'PostgreSQL',
+                'Github Actions'
+            ],
+        },
+        {
             companyName: 'BroadPeak Technologies',
             cityName: 'Lahore',
-            position: 'Front-end Developer',
-            duration: 'April 2025 - Till date',
+            position: 'Front-end Engineer',
+            duration: 'April 2025 - May 2025',
             description:
-                'Leading the revamp of Naranga’s franchise and lead management platform by migrating from a monolithic architecture to a modern microservices-based system, while rebuilding the UI using React, Redux, and Tailwind for enhanced performance, scalability, and user experience.',
-            skills: ['React', 'Redux Toolkit', 'Tailwind CSS', 'Javascript', 'JSON', 'Git', 'Material UI', 'NPM', 'Postman'],
+                'Lead the revamping of Naranga - a franchise and lead management platform by migrating from a monolithic architecture to a modern microservices-based system, while rebuilding the UI using React, Redux, and Tailwind for enhanced performance, scalability, and user experience.',
+            skills: ['React', 'Redux Toolkit', 'RTL', 'Jest', 'Tailwind CSS', 'Typescript', 'JSON', 'Git', 'Material UI', 'NPM', 'Postman'],
         },
         {
             companyName: 'Energy & Security Group',
             cityName: 'Lahore',
-            position: 'Front-end Developer',
+            position: 'Front-end Engineer',
             duration: 'Nov 2022 - Dec 2024',
             description:
                 'Senior Front-end developer for Power Sector Improvement activities. Leading a team of 4 developers developed e-Operations: a web portal providing interface to customer support centers and field officers. Built using React.js, Material UI and SCSS mainly.',
-            skills: ['React', 'Redux Toolkit', 'SCSS', 'Javascript', 'JSON', 'Git', 'Material UI', 'Typescript', 'NPM', 'Postman'],
-        },
-        {
-            companyName: 'Cyberseeds',
-            cityName: 'Lahore',
-            position: 'Software Engineer (Requirement Gathering)',
-            duration: 'Dec 2021 - Feb 2022',
-            description:
-                'Having experience in software engineer and development, I joined a fresh startup as software engineer and leading a team of 5 members did the requirement engineering and developed software requirement specification (SRS) for Pakistan Construction Network (PCN) a web portal containing  6 modules integrated using single sign-on.',
-            skills: ['Mockplus', 'Adobe XD', 'Visual Paradigm', 'Microsoft Office', 'YWorks', 'Camunda Modeller', 'Microsoft Visio'],
+            skills: ['React', 'Redux Toolkit', 'Storybooks', 'SCSS', 'Typescript', 'JSON', 'Git', 'Material UI', 'Typescript', 'NPM', 'Postman'],
         },
         {
             companyName: 'Power Information Technology Company (PITC)',

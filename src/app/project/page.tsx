@@ -21,7 +21,7 @@ export interface ProjectSchema
     url: string;
     image: StaticImageData;
     images?: StaticImageData[];
-    video: {
+    video?: {
         src: string;
         type: string;
         controls: boolean;
@@ -62,7 +62,7 @@ const ProjectPage = () =>
             className="min-h-screen w-auto ml-10 mt-10 bg-white dark:bg-[#111] text-black dark:text-white px-6 py-12"
         >
             {/* Optional Video Section */}
-            {projectToDisplay.video.src && (
+            {projectToDisplay?.video?.src && (
                 <div className="relative w-full h-96 rounded-2xl overflow-hidden mb-10 shadow-lg">
                     <video
                         ref={videoRef}
@@ -95,7 +95,7 @@ const ProjectPage = () =>
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="text-base leading-relaxed"
+                    className="text-base leading-relaxed text-justify"
                 >
                     {projectToDisplay.description}
                 </motion.p>

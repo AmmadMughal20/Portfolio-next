@@ -49,16 +49,6 @@ const Projects = () =>
         }
     }, [controls]);
 
-    // const containerVariants = {
-    //     hidden: {},
-    //     visible: {
-    //         transition: {
-    //             staggerChildren: 0.3,
-    //             delayChildren: 0.4,
-    //         },
-    //     },
-    // };
-
     const itemVariants = {
         hidden: { opacity: 0, y: 40 },
         visible: {
@@ -69,19 +59,7 @@ const Projects = () =>
                 ease: 'easeOut',
             },
         },
-    };
-
-    // const projectTitleVariants = {
-    //     hidden: { opacity: 0, x: 100 },
-    //     visible: {
-    //         opacity: 1,
-    //         x: 0,
-    //         transition: {
-    //             duration: 0.6,
-    //             ease: 'easeOut',
-    //         },
-    //     },
-    // };
+    }
 
     return (
         <div

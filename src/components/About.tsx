@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const About = () =>
 {
-    const professionalSkills = ['React', 'Redux ToolKit', 'Tailwind CSS', 'Flask', 'Javascript', 'Python', 'RestAPI', 'SCSS', 'JSON', 'Postman', 'Material UI', 'Jspdf', 'Git', 'NPM', 'Heroku', 'SqlServer', 'Postgresql', 'OpenProject', 'Trillo', 'Microsoft Office'];
+    const professionalSkills = ['Next.Js', 'React', 'React Native', 'Typescript', 'Redux ToolKit', 'Jotai', 'RTL', 'Jest', 'Prisma', 'Next-Auth', 'Supabase', 'Framer Motion', 'Shadcn', 'Tailwind CSS', 'Storybooks', 'Python', 'Flask', 'RestAPI', 'SCSS', 'JSON', 'Postman', 'Material UI', 'Github', 'AWS', 'Vercel', 'Postgresql', 'OpenProject', 'Trillo', 'Microsoft Office'];
     const otherSkills = ['Figma', 'Photopea', 'Adobe XD', 'Adobe Illustrator', 'Numpy', 'Pandas', 'Tensor Flow', 'Web Scrapping', 'Arduino IDE', 'ESP8266', 'Yed Yworks', 'Camunda Modeller', 'SVN'];
 
     const ref = useRef(null);
@@ -91,15 +91,15 @@ const About = () =>
                         initial="hidden"
                         animate={controls}>
                         <motion.p className="text-lg leading-relaxed mb-8 text-justify" variants={itemVariants}>
-                            Hi! I’m <strong>Ammad</strong>, and welcome to my portfolio website! I’m a passionate and results-driven <strong>Software Engineer</strong> specializing in <strong>web development</strong>, with over 4 years of experience building robust, scalable, and user-friendly applications. My expertise lies in crafting seamless digital experiences, from designing intuitive front-end interfaces to developing powerful back-end systems. I thrive on solving complex problems and delivering innovative solutions that make a real-world impact.
+                            I’m a passionate Software Engineer with over 4 years of experience building scalable, high-performance web and mobile applications. I specialize in creating seamless digital experiences — from intuitive front-end designs to robust, efficient back-end systems.
                         </motion.p>
 
                         <motion.p className="text-lg leading-relaxed mb-8 text-justify" variants={itemVariants}>
-                            With a strong foundation in <strong>Computer Science</strong> and a deep love for coding, I’ve honed my skills in <strong>React.js, Flask, RESTful APIs,</strong> and <strong>database integration</strong>. I’ve worked on diverse projects, from enterprise-level portals to inventory management systems, always prioritizing clean, efficient, and secure code. My attention to detail and commitment to excellence have allowed me to consistently deliver high-quality software products that exceed expectations.
+                            With a strong foundation in Computer Science and expertise in responsive web and cross-platform mobile development, I’ve worked on projects ranging from enterprise-level CRM portals to AI-powered SaaS platforms. I write clean, secure, and maintainable code, driven by a love for problem-solving and precision.
                         </motion.p>
 
                         <motion.p className="text-lg leading-relaxed mb-8 text-justify" variants={itemVariants}>
-                            Here, you’ll find a curated collection of my work, showcasing my technical expertise, problem-solving abilities, and dedication to creating transformative solutions. Whether it’s building responsive web applications, integrating cutting-edge APIs, or optimizing system performance, I’m passionate about leveraging technology to drive innovation and efficiency.
+                            Here, you’ll find a selection of my work that highlights my skills, creativity, and commitment to building innovative, user-centered solutions that deliver real value.
                         </motion.p>
                     </motion.div>
 
@@ -128,7 +128,7 @@ const About = () =>
                             </motion.div>
                         </motion.div>
 
-                        <motion.div className="mt-8" variants={itemVariants}>
+                        <motion.div variants={itemVariants}>
                             <div className="flex items-center mb-2">
                                 <p className="text-xl font-semibold ml-2">Other Skills</p>
                             </div>

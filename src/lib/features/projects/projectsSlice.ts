@@ -14,9 +14,70 @@ import Crappo from '@/assets/images/crappo.png'
 import Spm from '@/assets/images/spm.png'
 import Sis from '@/assets/images/sis.png'
 import Chatiniti from '@/assets/images/chatiniti.png'
+import AICallingAssistant from '@/assets/images/AI Calling Assistant.png'
+import BestCoverLetter from '@/assets/images/BestCoverLetter.png'
 
 const initialState = {
     projectsData: [
+        {
+            name: 'AI Calling Assistant',
+            type: 'Full Stack SaaS App',
+            urlTitle: 'ai-calling-assistant',
+            githubLink: 'https://github.com/AmmadMughal20/Webex-AI-Assistant/',
+            technologies: ['Next.Js', 'TypeScript', 'CISCO Webex Calling SDK', 'LiveKit', 'Tailwind CSS'],
+            url: 'https://github.com/AmmadMughal20/Webex-AI-Assistant/',
+            image: AICallingAssistant,
+            images: [AICallingAssistant],
+            description: `Developed an AI-powered real-time calling assistant using Next.Js, CISCO Webex, LiveKit, and Tailwind CSS. The platform enables companies to automate support calling system with seamless voice interactions with AI agents, supporting speech input/output. The project demonstrates my expertise in integrating third party software solutions, AI integration, and building intelligent, interactive SaaS platforms.`
+        },
+        {
+            name: 'BestCoverLetter',
+            type: 'AI SaaS App',
+            urlTitle: 'bestcoverletter',
+            githubLink: 'https://github.com/AmmadMughal20/Coverly',
+            technologies: ['Next.Js', 'React', 'TypeScript', 'OpenAI API', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
+            url: 'https://bestcoverletter.vercel.app/',
+            image: BestCoverLetter,
+            images: [BestCoverLetter],
+            video: {
+                src: '',
+                type: '',
+                controls: true,
+            },
+            description: `Built an AI-driven SaaS platform that helps users generate personalized, professional cover letters instantly. Leveraged OpenAI APIs to craft context-aware and role-specific letters, with user authentication, saved drafts, and premium plan support. Designed with a clean, responsive UI using Next.js and Tailwind CSS, the project highlights my skills in AI integration, database management, and full-stack application development.`
+        },
+        {
+            name: 'SPM',
+            type: 'SAAS Web Application',
+            urlTitle: 'spm',
+            githubLink: 'https://github.com/AmmadMughal20/SPM',
+            technologies: ['React', 'Flask', 'Tailwind', 'Typescript', 'Python'],
+            url: '',
+            image: Spm,
+            images: [Spm],
+            video: {
+                src: '',
+                type: '',
+                controls: true,
+            },
+            description: `The Sabri Project Management (SPM) System is a responsive SaaS platform tailored for the flex signage and print media industry, enabling end-to-end management of advertising projects for clients like PEPSI, Coke, and telecom firms. Built using React, Flask (Python), SQLAlchemy, and REST APIs, it supports client, contact, and vendor management, detailed deliverable workflows (survey to execution), and multi-role access. The system ensures seamless project tracking, real-time updates, and efficient collaboration across teams in a scalable and secure environment.`
+        },
+        {
+            name: 'e-Operations',
+            type: 'SAAS Web Application',
+            urlTitle: 'e-Operations',
+            githubLink: 'https://www.github.com',
+            technologies: ['React.js', 'Material UI', 'SCSS', 'Javascript', 'Js pdf'],
+            url: 'https://eops.pitc.com.pk',
+            image: eOps,
+            images: [eOps, eOps1, eOps2, eOps3],
+            video: {
+                src: './eOps.mp4',
+                type: 'video/mp4',
+                controls: true,
+            },
+            description: `The e-Operations web portal, a component of the Power Sector Improvement Activities (PSIA), served as a role-based interface for field operations. It facilitated workflow processing for services initiated through MEPCO Smart. The portal integrated with other solutions, like CCMS and Billing, through APIs and featured an interactive dashboard with hierarchical statistics for MEPCO's divisions. Notably, it included the E-File, a comprehensive digital document tracking connection history and all services throughout its lifespan.`
+        },
         {
             name: 'Kippax',
             type: 'Single Page App',
@@ -27,7 +88,7 @@ const initialState = {
             image: Kippax,
             images: [Kippax],
             video: {
-                src: './',
+                src: '',
                 type: '',
                 controls: true,
             },
@@ -65,22 +126,7 @@ const initialState = {
             },
             description: `CRAPPO is a responsive and visually engaging cryptocurrency website built with Next.js and Tailwind CSS. It features a modern landing page highlighting a blockchain project, with user registration/login, newsletter subscription utilizing MongoDB, and smooth animations using Framer Motion. The site is fully responsive and optimized for performance. My work helped the company establish a professional online presence, attract new users, and grow its subscriber base.`
         },
-        {
-            name: 'SPM',
-            type: 'SAAS Web Application',
-            urlTitle: 'spm',
-            githubLink: 'https://github.com/AmmadMughal20/SPM',
-            technologies: ['React', 'Flask', 'Tailwind', 'Typescript', 'Python'],
-            url: '',
-            image: Spm,
-            images: [Spm],
-            video: {
-                src: '',
-                type: '',
-                controls: true,
-            },
-            description: `The Sabri Project Management (SPM) System is a responsive SaaS platform tailored for the flex signage and print media industry, enabling end-to-end management of advertising projects for clients like PEPSI, Coke, and telecom firms. Built using React, Flask (Python), SQLAlchemy, and REST APIs, it supports client, contact, and vendor management, detailed deliverable workflows (survey to execution), and multi-role access. The system ensures seamless project tracking, real-time updates, and efficient collaboration across teams in a scalable and secure environment.`
-        },
+
         {
             name: 'Inventory Management',
             type: 'SAAS Web Application',
@@ -114,22 +160,7 @@ const initialState = {
             description: `Developed a full-featured real-time chat application using Flask, Flask-SocketIO, and PostgreSQL. Chatiniti supports one-to-one and group chat, along with audio/video calls using WebRTC. Designed REST and WebSocket endpoints with JWT-based auth. Built responsive UI with Jinja, HTML/CSS and Tailwind CSS. Features include live messaging, typing indicators, and media calls. Deployed using Docker with clean and scalable backend architecture.`
         },
 
-        {
-            name: 'e-Operations',
-            type: 'SAAS Web Application',
-            urlTitle: 'e-Operations',
-            githubLink: 'https://www.github.com',
-            technologies: ['React.js', 'Material UI', 'SCSS', 'Javascript', 'Js pdf'],
-            url: 'https://eops.pitc.com.pk',
-            image: eOps,
-            images: [eOps, eOps1, eOps2, eOps3],
-            video: {
-                src: './eOps.mp4',
-                type: 'video/mp4',
-                controls: true,
-            },
-            description: `The e-Operations web portal, a component of the Power Sector Improvement Activities (PSIA), served as a role-based interface for field operations. It facilitated workflow processing for services initiated through MEPCO Smart. The portal integrated with other solutions, like CCMS and Billing, through APIs and featured an interactive dashboard with hierarchical statistics for MEPCO's divisions. Notably, it included the E-File, a comprehensive digital document tracking connection history and all services throughout its lifespan.`
-        },
+
         {
             name: 'MEPCO Smart',
             type: 'Web & Mobile Application',

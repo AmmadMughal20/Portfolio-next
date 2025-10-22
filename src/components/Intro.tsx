@@ -63,7 +63,7 @@ const Intro = () =>
                         initial="hidden"
                         animate={controls}
                     >
-                        A passionate <span className="text-primary">Software Engineer</span>
+                        A passionate <span className="text-primary">Full-Stack Software Engineer</span>
                     </motion.p>
 
                     {/* Description */}
@@ -77,7 +77,20 @@ const Intro = () =>
                         initial="hidden"
                         animate={controls}
                     >
-                        With 4 years of experience building scalable web applications for companies, I specialize in full-stack development and have a deep interest in Artificial Intelligence.
+                        - for building high-performance, secure, and user-centric digital products.
+                        My goal is simple: to help you launch faster, scale smarter, and deliver seamless user experiences that make a lasting impact.
+                    </motion.p>
+                    <motion.p
+                        className="text-base sm:text-lg md:text-xl max-w-3xl leading-relaxed text-justify"
+                        variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.6, delay: 0.2, ease: 'easeInOut' }}
+                        initial="hidden"
+                        animate={controls}
+                    >
+
                     </motion.p>
 
                     {/* Button */}
