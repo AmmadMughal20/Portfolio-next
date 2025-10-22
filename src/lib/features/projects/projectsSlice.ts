@@ -16,7 +16,7 @@ import Sis from '@/assets/images/sis.png'
 import Chatiniti from '@/assets/images/chatiniti.png'
 import AICallingAssistant from '@/assets/images/AI Calling Assistant.png'
 import BestCoverLetter from '@/assets/images/BestCoverLetter.png'
-
+import MedConnect from '@/assets/images/MedConnect.png'
 const initialState = {
     projectsData: [
         {
@@ -29,6 +29,27 @@ const initialState = {
             image: AICallingAssistant,
             images: [AICallingAssistant],
             description: `Developed an AI-powered real-time calling assistant using Next.Js, CISCO Webex, LiveKit, and Tailwind CSS. The platform enables companies to automate support calling system with seamless voice interactions with AI agents, supporting speech input/output. The project demonstrates my expertise in integrating third party software solutions, AI integration, and building intelligent, interactive SaaS platforms.`
+        },
+        {
+            name: 'Patient Follow-Up Automation',
+            type: 'Healthcare SaaS Backend',
+            urlTitle: 'patient-followup-automation',
+            githubLink: 'https://github.com/AmmadMughal20/patient-followup-automation',
+            technologies: [
+                'Next.js',
+                'Node.js',
+                'TypeScript',
+                'Twilio',
+                'MongoDB',
+                'Mongoose',
+                'Retell AI',
+                'Tailwind CSS'
+            ],
+            url: '#',
+            image: MedConnect,
+            images: [MedConnect],
+
+            description: `Developed an intelligent healthcare automation system that manages patient follow-ups via WhatsApp and AI-driven voice calls. Integrated Twilio for WhatsApp messaging and Retell AI for automated appointment reminder calls. Built robust scheduling and retry logic with MongoDB and Mongoose to track call/message attempts and patient responses. Implemented an AI-based conversation analyzer to classify patient intent (booked, not interested, follow-up). Designed as a scalable Next.js backend service to enhance patient engagement and clinic efficiency.`
         },
         {
             name: 'BestCoverLetter',
