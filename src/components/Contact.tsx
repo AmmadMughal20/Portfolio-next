@@ -134,7 +134,7 @@ const Contact = () =>
                     initial="hidden"
                     animate={controls}
                 >
-                    <motion.h2 className="text-3xl font-bold mb-6" variants={experienceTitleVariants}>Contact Us
+                    <motion.h2 className="text-3xl font-bold mb-6" variants={experienceTitleVariants}>Contact Me
                         <span className="text-primary">.</span>
                     </motion.h2>
                     <motion.div
